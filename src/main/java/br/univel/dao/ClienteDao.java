@@ -20,7 +20,7 @@ public class ClienteDao {
 			PreparedStatement ps = db.prepareStatement("insert into cliente (nome, cpf, telefone) values (?, ?, ?) ");
 			ps.setString(1, cliente.getNome());
 			ps.setString(2, cliente.getTelefone());
-			ps.setString(3, cliente.getTelefone());
+			ps.setString(3, cliente.getEndereco());
 
 			ps.executeUpdate();
 

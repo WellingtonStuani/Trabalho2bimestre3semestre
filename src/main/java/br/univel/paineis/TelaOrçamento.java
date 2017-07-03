@@ -39,8 +39,8 @@ public class TelaOrçamento extends JFrame {
 	private JTextField txtNomeCliente;
 	private JTable tableOrcamento;
 
-	private CadastroCliente consCliente;
-	private CadProduto consProduto;
+	private ConsultaCliente consCliente;
+	private ConsultaProduto consProduto;
 
 	private Cliente cliente;
 	private Produto produto;
@@ -102,7 +102,7 @@ public class TelaOrçamento extends JFrame {
 				if (e.getKeyCode() == KeyEvent.VK_F2) {
 
 					if (consProduto == null) {
-						consProduto = new CadProduto(new Runnable() {
+						consProduto = new ConsultaProduto(new Runnable() {
 							public void run() {
 								produtoToFields(consProduto.getProduto());
 								consProduto = null;
@@ -213,7 +213,7 @@ public class TelaOrçamento extends JFrame {
 				if (e.getKeyCode() == KeyEvent.VK_F2) {
 
 					if (consCliente == null) {
-						consCliente = new CadastroCliente(new Runnable() {
+						consCliente = new ConsultaCliente(new Runnable() {
 							public void run() {
 								clienteToFields(consCliente.getCliente());
 								consCliente = null;

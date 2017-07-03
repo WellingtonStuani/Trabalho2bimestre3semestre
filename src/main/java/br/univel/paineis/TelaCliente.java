@@ -21,6 +21,7 @@ import br.univel.dao.ClienteDao;
 
 
 public class TelaCliente extends JFrame {
+	
 	private static final long serialVersionUID = 1970295835212555942L;
 
 	private JPanel contentPane;
@@ -31,9 +32,7 @@ public class TelaCliente extends JFrame {
 
 	private Cliente cliente;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -51,9 +50,7 @@ public class TelaCliente extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public TelaCliente() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,7 +94,7 @@ public class TelaCliente extends JFrame {
 
 		txtNome = new JTextField();
 		txtNome.addKeyListener(new KeyAdapter() {
-			private CadastroCliente cons;
+			private ConsultaCliente cons;
 
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -106,7 +103,7 @@ public class TelaCliente extends JFrame {
 				if (e.getKeyCode() == KeyEvent.VK_F2) {
 
 					if (cons == null) {
-						cons = new CadastroCliente(new Runnable() {
+						cons = new ConsultaCliente(new Runnable() {
 							public void run() {
 								clienteToFields(cons.getCliente());
 								cons = null;
@@ -127,7 +124,7 @@ public class TelaCliente extends JFrame {
 		contentPane.add(txtNome, gbc_txtNome);
 		txtNome.setColumns(10);
 
-		JLabel lblCpf = new JLabel("CPF");
+		JLabel lblCpf = new JLabel("telefone");
 		GridBagConstraints gbc_lblCpf = new GridBagConstraints();
 		gbc_lblCpf.anchor = GridBagConstraints.EAST;
 		gbc_lblCpf.insets = new Insets(0, 0, 5, 5);
@@ -136,22 +133,22 @@ public class TelaCliente extends JFrame {
 		contentPane.add(lblCpf, gbc_lblCpf);
 
 		txtendereco = new JTextField();
-		GridBagConstraints gbc_txtCPF = new GridBagConstraints();
-		gbc_txtCPF.gridwidth = 4;
-		gbc_txtCPF.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtCPF.insets = new Insets(0, 0, 5, 5);
-		gbc_txtCPF.gridx = 1;
-		gbc_txtCPF.gridy = 2;
-		contentPane.add(txtendereco, gbc_txtCPF);
+		GridBagConstraints gbc_txttelefone = new GridBagConstraints();
+		gbc_txttelefone.gridwidth = 4;
+		gbc_txttelefone.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txttelefone.insets = new Insets(0, 0, 5, 5);
+		gbc_txttelefone.gridx = 1;
+		gbc_txttelefone.gridy = 2;
+		contentPane.add(txtendereco, gbc_txttelefone);
 		txtendereco.setColumns(10);
 
-		JLabel lblTelefone = new JLabel("Telefone");
-		GridBagConstraints gbc_lblTelefone = new GridBagConstraints();
-		gbc_lblTelefone.anchor = GridBagConstraints.EAST;
-		gbc_lblTelefone.insets = new Insets(0, 0, 5, 5);
-		gbc_lblTelefone.gridx = 0;
-		gbc_lblTelefone.gridy = 3;
-		contentPane.add(lblTelefone, gbc_lblTelefone);
+		JLabel lblTelefone = new JLabel("endereco");
+		GridBagConstraints gbc_lblendereco = new GridBagConstraints();
+		gbc_lblendereco.anchor = GridBagConstraints.EAST;
+		gbc_lblendereco.insets = new Insets(0, 0, 5, 5);
+		gbc_lblendereco.gridx = 0;
+		gbc_lblendereco.gridy = 3;
+		contentPane.add(lblTelefone, gbc_lblendereco);
 
 		txtTelefone = new JTextField();
 		GridBagConstraints gbc_txtTelefone = new GridBagConstraints();
@@ -167,7 +164,7 @@ public class TelaCliente extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				// Chama método para pegar um novo cliente..
+		
 				novoCliente();
 
 			}

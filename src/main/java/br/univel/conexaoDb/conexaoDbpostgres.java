@@ -14,9 +14,9 @@ public class conexaoDbpostgres {
 		Connection connection = null;  
 
 		try {
-			String driverName = "com.mysql.jdbc.Driver";
+			String driverName = "org.postgresql.Driver";
 			Class.forName(driverName);
-			String serverName = "localhost"; 
+			String serverName = "localhost:5432"; 
 			String mydatabase = "trabalhobim"; 
 			String url = "jdbc:postgresql://" + serverName + "/" + mydatabase;
 			String username = "postgres"; // 
@@ -35,6 +35,8 @@ public class conexaoDbpostgres {
 			System.out.println("O driver expecificado nao foi encontrado.");
 			return null;
 
+			
+			
 		} catch (SQLException e) {
 			System.out.println("Nao foi possivel conectar ao Banco de Dados.");
 			return null;

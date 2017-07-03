@@ -13,6 +13,7 @@ public class ArquivoUrl {
 	public List<String> lerUrl() {
 		List<String> lista = new ArrayList<String>();
 		try {
+		
 			URL url = new URL(URL);
 			try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
 				String inputLine = null;
@@ -21,7 +22,7 @@ public class ArquivoUrl {
 				}
 			}
 		} catch (IOException e) {
-			throw new RuntimeException("Deu ruim!", e);
+			throw new RuntimeException("nao conectou !", e);
 		}
 		return lista;
 	}

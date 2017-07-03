@@ -10,9 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.math.BigDecimal;
 import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,21 +19,25 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import br.univel.Model.ProductModel;
-import br.univel.classes.Produto;
-import br.univel.dao.ProdutoDao;
-
+import br.univel.Model.ClienteModel;
+import br.univel.classes.Cliente;
+import br.univel.dao.ClienteDao;
 
 
-public class CadProduto extends JFrame {
+
+
+public class ConsultaCliente extends JFrame {
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -2262926839920064131L;
 
 	private JPanel contentPane;
 	private JTextField txtNome;
-	private JTable tableProduto;
+	private JTable tableCliente;
 
-	private Produto produto;
+	private Cliente cliente;
 
 	/**
 	 * Launch the application.
@@ -45,7 +47,7 @@ public class CadProduto extends JFrame {
 			public void run() {
 				try {
 
-					CadProduto frame = new CadProduto(null);
+					ConsultaCliente frame = new ConsultaCliente(null);
 					frame.setVisible(true);
 					frame.setSize(800, 600);
 					frame.setLocationRelativeTo(null);
@@ -60,10 +62,10 @@ public class CadProduto extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadProduto(Runnable runnable) {
+	public ConsultaCliente(Runnable runnable) {
 		addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosing(WindowEvent arg0) {
+			public void windowClosing(WindowEvent e) {
 				
 				if (runnable != null){
 					runnable.run();
@@ -124,22 +126,25 @@ public class CadProduto extends JFrame {
 		gbc_scrollPane.gridy = 1;
 		contentPane.add(scrollPane, gbc_scrollPane);
 
-		tableProduto = new JTable();
-		tableProduto.addMouseListener(new MouseAdapter() {
+		tableCliente = new JTable();
+		tableCliente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 
-				produto = new Produto();
+				cliente = new Cliente();
 
-				int selectedRow = tableProduto.getSelectedRow();
+				int selectedRow = tableCliente.getSelectedRow();
 
-				produto.setId((int) tableProduto.getValueAt(selectedRow, 0));
-				produto.setDescricao((String) tableProduto.getValueAt(selectedRow, 1));
-				produto.setPreco((BigDecimal) tableProduto.getValueAt(selectedRow, 2));
+				cliente.setId((int) tableCliente.getValueAt(selectedRow, 0));
+				cliente.setNome((String) tableCliente.getValueAt(selectedRow, 1));
+				cliente.setTelefone((String) tableCliente.getValueAt(selectedRow, 2));
+				cliente.setEndereco((String) tableCliente.getValueAt(selectedRow, 3));
+				
+				
 
 			}
 		});
-		scrollPane.setViewportView(tableProduto);
+		scrollPane.setViewportView(tableCliente);
 
 		this.setVisible(true);
 		this.setSize(800, 600);
@@ -148,20 +153,20 @@ public class CadProduto extends JFrame {
 
 	private void consultarCliente() {
 
-		List<Produto> listarByNameParam = ProdutoDao.listarByDescricaoParam(txtNome.getText());
+		List<Cliente> listarByNameParam = ClienteDao.listarByNameParam(txtNome.getText());
 
-		ProductModel model = new ProductModel(listarByNameParam);
+		ClienteModel model = new ClienteModel(listarByNameParam);
 
-		tableProduto.setModel(model);
+		tableCliente.setModel(model);
 
 	}
 
-	public Produto getProduto() {
-		return produto;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setProduto(Produto cliente) {
-		this.produto = cliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 }
